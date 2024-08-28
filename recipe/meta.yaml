@@ -1,5 +1,5 @@
 {% set name = "sphinx-needs" %}
-{% set version = "2.1.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sphinx_needs-{{ version }}.tar.gz
-  sha256: b71ae36b3c14000ceedc42b1b230f214fececb227dbe4e282bc0b8ac7b7e76c8
+  sha256: 2c8892468d0bad131d94f221ac6e8595c30a07ef54b532511250e79816b08d96
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   host:
