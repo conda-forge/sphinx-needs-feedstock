@@ -1,13 +1,13 @@
 {% set name = "sphinx-needs" %}
-{% set version = "4.1.0" %}
+{% set version = "4.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sphinx_needs-{{ version }}.tar.gz
-  sha256: 7d40e9c29353d9784f469b2093412846060cda4f3b55127ac58a2692c3381ef9
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sphinx_needs-{{ version }}.tar.gz
+  sha256: f1ae86afb3d1d3f3c5d8cecffe740ae03f32a908212b4471866dff1a0738b252
 
 build:
   noarch: python
@@ -16,13 +16,13 @@ build:
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools
     - poetry-core >=1.0.8
     - pip
   run:
-    - python >=3.8.0
-    - sphinx >=6.0,<9
+    - python >={{ python_min }}
+    - sphinx >=7.0,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
     - jsonschema >=3.2.0
@@ -37,6 +37,7 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
