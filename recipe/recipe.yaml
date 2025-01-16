@@ -1,27 +1,28 @@
-{% set name = "sphinx-needs" %}
-{% set version = "4.2.0" %}
+context:
+  name: sphinx-needs
+  version: 4.2.0
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sphinx_needs-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
   sha256: f1ae86afb3d1d3f3c5d8cecffe740ae03f32a908212b4471866dff1a0738b252
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - setuptools
     - poetry-core >=1.0.8
     - pip
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - sphinx >=7.0,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
@@ -31,20 +32,22 @@ requirements:
     - sphinxcontrib-jquery >=4,<5
     - matplotlib-base >=3.3.0
 
-test:
-  imports:
-    - sphinx_needs
-  commands:
-    - pip check
-  requires:
-    - python {{ python_min }}
-    - pip
+tests:
+  - python:
+      imports:
+        - sphinx_needs
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pip
+    script:
+      - pip check
 
 about:
-  home: http://github.com/useblocks/sphinx-needs
   summary: Sphinx needs extension for managing needs/requirements and specifications
   license: MIT
   license_file: LICENSE
+  homepage: http://github.com/useblocks/sphinx-needs
 
 extra:
   recipe-maintainers:
