@@ -1,6 +1,6 @@
 context:
   name: sphinx-needs
-  version: "5.1.0"
+  version: "6.0.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,11 +8,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
-  sha256: 23a0ca1dfe733a0a58e884b59ce53a8b63a530f0ac87ae5ab0d40f05f853fbe7
+  sha256: 7e437d0f895f63e373da146e8c039d93106442521e9082f8efe345f125953345
 
 build:
   number: 0
-  noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -21,15 +20,27 @@ requirements:
     - flit-core >=3.4,<4
     - pip
   run:
-    - python >=${{ python_min }}
-    - sphinx >=7.0,<9
+    - python
+    - sphinx >=7.4,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
     - jsonschema >=3.2.0
-    - sphinxcontrib-plantuml
+    # dependencies from jsonschema[format]
+    - fqdn 
+    - idna
+    - isoduration
+    - jsonpointer >=1.13
+    - rfc3339-validator 
+    - rfc3987
+    - uri-template
+    - webcolors >=1.11
+    ###
     - sphinx-data-viewer >=0.1.5,<0.2.0
     - sphinxcontrib-jquery >=4,<5
-    - matplotlib-base >=3.3.0
+    - if: match(python, "<3.11")
+      then: tomli
+    - typing-extensions >=4.14.0
+    - typeguard >=4.4.4
 
 tests:
   - python:
@@ -37,7 +48,7 @@ tests:
         - sphinx_needs
   - requirements:
       run:
-        - python ${{ python_min }}.*
+        - python
         - pip
     script:
       - pip check
