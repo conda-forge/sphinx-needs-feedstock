@@ -11,7 +11,7 @@ source:
   sha256: 7e437d0f895f63e373da146e8c039d93106442521e9082f8efe345f125953345
 
 build:
-  number: 0
+  number: 1
   script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -26,11 +26,11 @@ requirements:
     - requests >=2.32,<3.0.0
     - jsonschema >=3.2.0
     # dependencies from jsonschema[format]
-    - fqdn 
+    - fqdn
     - idna
     - isoduration
     - jsonpointer >=1.13
-    - rfc3339-validator 
+    - rfc3339-validator
     - rfc3987
     - uri-template
     - webcolors >=1.11
