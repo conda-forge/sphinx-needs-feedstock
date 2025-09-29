@@ -38,9 +38,10 @@ requirements:
     ###
     - sphinx-data-viewer >=0.1.5,<0.2.0
     - sphinxcontrib-jquery >=4,<5
-    - toml  # [py<311]
+    - if: match(python, "<3.11")
+      then: tomli
     - typing-extensions >=4.14.0
-    - typeguard>=4.4.4
+    - typeguard >=4.4.4
 
 tests:
   - python:
