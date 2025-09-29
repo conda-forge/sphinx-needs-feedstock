@@ -20,7 +20,7 @@ requirements:
     - flit-core >=3.4,<4
     - pip
   run:
-    - python >=${{ python_min }}
+    - python
     - sphinx >=7.4,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
@@ -48,7 +48,7 @@ tests:
         - sphinx_needs
   - requirements:
       run:
-        - python ${{ python_min }}.*
+        - python
         - pip
     script:
       - pip check
