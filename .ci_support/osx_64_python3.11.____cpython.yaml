@@ -13,11 +13,8 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.12.* *_cpython
+- 3.11.* *_cpython
 python_min:
 - '3.10'
 target_platform:
 - osx-64
-zip_keys:
-- - python
-  - channel_sources
