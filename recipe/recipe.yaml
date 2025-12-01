@@ -1,6 +1,6 @@
 context:
   name: sphinx-needs
-  version: "6.1.1"
+  version: "6.2.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
-  sha256: 3707d7cfc74c52675c43f273dfcb3c42ca26ec4093379e5c917fb14f6c314971
+  sha256: 83a65f6ca4daf04efbf541dbbbe9830c9ee27cd00b24b57c1347f267cb290c55
 
 build:
   number: 0
@@ -24,19 +24,9 @@ requirements:
     - sphinx >=7.4,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
-    - jsonschema >=3.2.0
-    # dependencies from jsonschema[format]
-    - fqdn
-    - idna
-    - isoduration
-    - jsonpointer >=1.13
-    - rfc3339-validator
-    - rfc3987
-    - uri-template
-    - webcolors >=1.11
-    ###
+    - jsonschema-rs >=0.37.1
     - sphinx-data-viewer >=0.1.5,<0.2.0
-    - sphinxcontrib-jquery >=4,<5
+    - sphinxcontrib-jquery >=4
     - if: match(python, "<3.11")
       then: tomli
     - typing-extensions >=4.14.0
