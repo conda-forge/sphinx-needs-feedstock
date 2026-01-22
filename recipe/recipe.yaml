@@ -11,8 +11,9 @@ source:
   sha256: a8a1cccc1525b94551e7a2f9525bf36eaae88654abceb5047b5470d57472b346
 
 build:
-  number: 0
+  number: 1
   script: ${{ PYTHON }} -m pip install . -vv
+  noarch: python
 
 requirements:
   host:
@@ -20,28 +21,22 @@ requirements:
     - flit-core >=3.4,<4
     - pip
   run:
-    - python
+    - python >=${{ python_min }}
     - sphinx >=7.4,<9
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
-    - jsonschema-rs >=0.37.1
+    - jsonschema-rs >=0.37.1,<0.38
     - sphinx-data-viewer >=0.1.5,<0.2.0
-    - sphinxcontrib-jquery >=4
-    - if: match(python, "<3.11")
-      then: tomli
+    - sphinxcontrib-jquery >=4.0
+    - tomli
     - typing-extensions >=4.14.0
-    - typeguard >=4.4.4
 
 tests:
   - python:
       imports:
         - sphinx_needs
-  - requirements:
-      run:
-        - python
-        - pip
-    script:
-      - pip check
+      pip_check: true
+      python_version: ${{ python_min }}.*
 
 about:
   summary: Sphinx needs extension for managing needs/requirements and specifications
