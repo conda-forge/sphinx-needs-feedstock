@@ -1,6 +1,6 @@
 context:
   name: sphinx-needs
-  version: "6.3.0"
+  version: "7.0.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
-  sha256: a8a1cccc1525b94551e7a2f9525bf36eaae88654abceb5047b5470d57472b346
+  sha256: 3fa665181c323d0b76f6de0d8565f925f36933e8af4c253d34127755eff07371
 
 build:
   number: 1
@@ -22,7 +22,7 @@ requirements:
     - pip
   run:
     - python >=${{ python_min }}
-    - sphinx >=7.4,<9
+    - sphinx >=7.4,<10
     - requests-file >=2.1.0,<3.0.0
     - requests >=2.32,<3.0.0
     - jsonschema-rs >=0.37.1,<0.38
@@ -30,6 +30,7 @@ requirements:
     - sphinxcontrib-jquery >=4.0
     - tomli
     - typing-extensions >=4.14.0
+    - minijinja >=2.15
 
 tests:
   - python:
