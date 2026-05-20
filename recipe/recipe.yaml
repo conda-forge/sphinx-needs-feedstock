@@ -1,6 +1,6 @@
 context:
   name: sphinx-needs
-  version: "8.1.0"
+  version: "8.1.1"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
-  sha256: 14d2614d80f92abed418e6d52d201f99c31200df1beaaa0215af5b1df1e61d74
+  sha256: fd72d22c958ece9a90aea517fd276197d7f602fc6ecf9fd48c1840b85cb96574
 
 build:
   number: 0
