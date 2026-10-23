@@ -1,6 +1,6 @@
 context:
   name: sphinx-needs
-  version: "8.5.0"
+  version: "9.1.0"
 
 package:
   name: ${{ name|lower }}
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sphinx_needs-${{ version }}.tar.gz
-  sha256: 42d327baaf39f5041f692cb85609ef7023c0a73b688cde5803db444e577bb63d
+  sha256: fa12cb45a585ce47cc4a633cb97d0df44fb3107f82ed01eebd729e9e4be518dc
 
 build:
   number: 0
@@ -18,26 +18,30 @@ build:
 requirements:
   host:
     - python ${{ python_min }}.*
-    - flit-core >=3.4,<4
+    - flit-core >=3.4,<5
     - pip
   run:
     - python >=${{ python_min }}
     - sphinx >=7.4,<10
-    - requests-file >=2.1.0,<3.0.0
-    - requests >=2.32,<3.0.0
-    - jsonschema-rs >=0.37.1,<0.38
-    - sphinx-data-viewer >=0.1.5,<0.2.0
-    - sphinxcontrib-jquery >=4.0
-    - tomli
+    - docutils >=0.21
+    - requests-file >=2.1,<4.0
+    - requests ~=2.32
+    - jsonschema-rs >=0.37.1,<0.59
+    - sphinx-data-viewer ~=0.1.5
+    - sphinxcontrib-jquery ~=4.0
     - typing-extensions >=4.14.0
-    - minijinja >=2.15
+    - minijinja ~=2.15
+    - ub-project >=1.1.0,<2
+    - ub-needs-exchange >=1.1.0,<2
 
 tests:
   - python:
       imports:
         - sphinx_needs
       pip_check: true
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
 
 about:
   summary: Sphinx needs extension for managing needs/requirements and specifications
